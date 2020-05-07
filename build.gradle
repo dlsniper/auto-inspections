@@ -1,0 +1,44 @@
+plugins {
+    id 'java'
+    id 'org.jetbrains.intellij' version '0.4.20'
+}
+
+group 'ro.florinpatan.autoinspections'
+version '0.0.1'
+
+repositories {
+    maven { url "https://www.jetbrains.com/intellij-repository/releases" }
+    maven { url "https://www.jetbrains.com/intellij-repository/snapshots" }
+    maven { url "https://jetbrains.bintray.com/intellij-third-party-dependencies" }
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
+
+// See https://github.com/JetBrains/gradle-intellij-plugin/
+intellij {
+    version 'IU-2020.1'
+
+    plugins 'org.jetbrains.plugins.go:201.6668.60.126'
+}
+
+runIde {
+    maxHeapSize = "2g"
+}
+
+patchPluginXml {
+    untilBuild '201.*'
+
+    changeNotes """
+      v0.0.1 Initial release.<br>"""
+}
+
+publishPlugin {
+    token intellijPublishToken
+}
+
+publishPlugin {
+    channels intellijPublishChannel
+}

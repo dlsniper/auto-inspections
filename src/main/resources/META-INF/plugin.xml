@@ -1,0 +1,19 @@
+<idea-plugin>
+    <id>ro.florinpatan.autoinspections</id>
+    <name>Run inspections on save</name>
+    <vendor email="florin@jetbrains.com">Florin Pățan</vendor>
+
+    <description><![CDATA[
+    This plugin allows you to run Inspections on save.
+    ]]></description>
+
+    <!-- please see https://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+         on how to target different products -->
+    <depends>com.intellij.modules.platform</depends>
+    // TODO: Figure out how to run Go Only inspections and enforce this requirement
+    <!--<depends>org.jetbrains.plugins.go</depends>-->
+
+    <extensions defaultExtensionNs="com.intellij">
+        <backgroundPostStartupActivity implementation="ro.florinpatan.autoinspections.AutoInspections" />
+    </extensions>
+</idea-plugin>
